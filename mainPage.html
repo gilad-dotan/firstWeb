@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<style>
+
+    button {
+        background-color:#B34B66;
+        text-decoration: #0F6380;
+        border-radius: 12px;
+        margin-bottom: 10px;
+    }
+
+    .mainTemplate {
+        background-color: #E96B62;
+        border-radius: 40px;
+        padding: 200px 300px;
+    }
+    label {
+        font-size: 36px;
+        color: #0F6380;
+        /*text-align: center;*/
+    }
+
+    .ticTacToe {
+        align-items: center;
+        background-color:#B34B66;
+        text-decoration: #0F6380;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        padding: 50px;
+    }
+</style>
+<html>
+    <head>
+        <title>Main Page</title>
+    </head>
+    <body style="background-color: #0F6380;">
+
+        <button onclick="turn()">About us</button>
+        <button>Log in</button>
+        <button>Register</button>
+
+        <div class=mainTemplate>
+            <div class=firstTemplate>
+                <label>Welcom to my exciting new website!!!</label>
+            </div>
+        </div>
+
+        <!-- <div style="padding-left: 30%; padding-right: 20%; padding-top: 15%;"> -->
+        <div style="padding-left: 30%; padding-right: 20%; padding-top: 1%;">
+            <button id="s11" class=ticTacToe onclick="turn()"></button>
+            <button id="s12" class=ticTacToe></button>
+            <button id="s13" class=ticTacToe></button>
+            <br>
+            <button id="s21" class=ticTacToe></button>
+            <button id="s22" class=ticTacToe></button>
+            <button id="s23" class=ticTacToe></button>
+            <br>
+            <button id="s31" class=ticTacToe></button>
+            <button id="s32" class=ticTacToe></button>
+            <button id="s33" class=ticTacToe></button>
+        </div>
+    </body>
+</html>
+<script>
+    var turn = "X";
+    var btn = document.getElementById("s11");
+
+    function turn() {
+        alert("wooop");
+        btn.value = "Close Curtain";
+        btn.innerText = "x";
+        btn.innerHTML = "X";
+    }
+</script>
