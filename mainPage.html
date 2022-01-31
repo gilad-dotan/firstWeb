@@ -26,7 +26,7 @@
         text-decoration: #0F6380;
         border-radius: 12px;
         margin-bottom: 10px;
-        padding: 50px;
+        padding: 10px 15px;
     }
 </style>
 <html>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <!-- <div style="padding-left: 30%; padding-right: 20%; padding-top: 15%;"> -->
+        <label style="font-size: 36px; color: #B34B66; padding-left: 23%;">Enjoy a tic tac toe game:</label>
         <div style="padding-left: 30%; padding-right: 20%; padding-top: 1%;">
             <button id="b1" class=ticTacToe onclick="applyTurn(1)">&#10240;</button>
             <button id="b2" class=ticTacToe onclick="applyTurn(2)">&#10240;</button>
@@ -63,6 +63,7 @@
 </html>
 <script>
     var turn = "X";
+
     var btn1 = document.getElementById("b1");
     var btn2 = document.getElementById("b2");
     var btn3 = document.getElementById("b3");
@@ -73,14 +74,9 @@
     var btn8 = document.getElementById("b8");
     var btn9 = document.getElementById("b9"); 
 
-    function applyTurn(btnIdx) {
-        if (turn == "X") {
-            turn = "O";
-        }
-        else {
-            turn = "X";
-        }
+    var blankChar = btn1.innerText;
 
+    function applyTurn(btnIdx) {
         switch (btnIdx) {
         case 1:
             btn1.innerText = turn;
@@ -109,7 +105,83 @@
         case 9:
             btn9.innerText = turn;
             break;
-            //console.log(`Sorry, we are out of ${expr}.`);
         }
+
+        checkIfWin();
+
+        if (turn == "X") {
+            turn = "O";
+        }
+        else {
+            turn = "X";
+        }
+    }
+
+    function checkIfWin() {
+        // checking for horizontal win
+        if (btn1.innerText == btn2.innerText && btn2.innerText == btn3.innerText && !(btn1.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+        if (btn4.innerText == btn5.innerText && btn5.innerText == btn6.innerText && !(btn4.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+        if (btn7.innerText == btn8.innerText && btn8.innerText == btn9.innerText && !(btn7.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+
+        // checking for vertical win
+        if (btn1.innerText == btn4.innerText && btn4.innerText == btn7.innerText && !(btn1.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+        if (btn2.innerText == btn5.innerText && btn5.innerText == btn8.innerText && !(btn2.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+        if (btn3.innerText == btn6.innerText && btn6.innerText == btn9.innerText && !(btn3.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+
+        // checking the diagonals
+        if (btn1.innerText == btn5.innerText && btn5.innerText == btn9.innerText && !(btn1.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+        if (btn3.innerText == btn5.innerText && btn5.innerText == btn7.innerText && !(btn3.innerText == blankChar)) {
+            alert(turn + " have Won!");
+            resetBoard();
+        }
+
+        if (!(btn1.innerText == blankChar)
+            && !(btn1.innerText == blankChar)
+            && !(btn2.innerText == blankChar)
+            && !(btn3.innerText == blankChar)
+            && !(btn4.innerText == blankChar)
+            && !(btn5.innerText == blankChar)
+            && !(btn6.innerText == blankChar)
+            && !(btn7.innerText == blankChar)
+            && !(btn8.innerText == blankChar)
+            && !(btn9.innerText == blankChar)) {
+                alert("A tie!");
+                resetBoard();
+            }
+    }
+
+    function resetBoard() {
+        btn1.innerText = blankChar;
+        btn2.innerText = blankChar;
+        btn3.innerText = blankChar;
+        btn4.innerText = blankChar;
+        btn5.innerText = blankChar;
+        btn6.innerText = blankChar;
+        btn7.innerText = blankChar;
+        btn8.innerText = blankChar;
+        btn9.innerText = blankChar;
+
+        turn = "X";
     }
 </script>
