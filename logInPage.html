@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<style>
+
+    button {
+        background-color:#008CBA;
+        text-decoration: #4CAF50;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        font-size: 50px;
+        border-radius: 30px;
+    }
+
+    .mainTemplate {
+        background-color: #E96B62;
+        border-radius: 40px;
+        padding: 170px 300px;
+    }
+    label {
+        font-size: 36px;
+        color: #0F6380;
+        /*text-align: center;*/
+    }
+
+</style>
+<html>
+    <head>
+        <title>Login Page</title>
+    </head>
+    <body style="background-color: #0F6380;">
+        <div class=mainTemplate>
+            <div class=firstTemplate style="margin-left: 35%;">
+                <label>Username: </label>
+                <span><input id="Username"></span>
+
+                <br><br>
+
+                <label>Password: </label>
+                <span><input id="Password"></span>
+
+                <br><br>
+
+                <button style="margin-top: 30px;" onclick="check_validity()">Log In</button>
+
+                <br><br>
+
+                <label id="l1"></label>
+                <br>
+                <label id="l2"></label>
+            </div>
+        </div>
+    </body>
+</html>
+<script>
+    const illegalChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+
+    var Username = document.getElementById("Username");
+    var Password = document.getElementById("Password");
+
+    var l1 = document.getElementById("l1");
+    var l2 = document.getElementById("l2");
+
+    /*function checkValidity(btnIdx) {
+        //alert("Hi!!!");
+    }*/
+
+    function check_validity() {
+        if (!(illegalChars.test(Username.value)) && !(illegalChars.test(Password.value)))
+        {
+            l1.innerText = "Username = " + Username.value;
+            l2.innerText = "Password = " + Password.value;
+        }
+        else {
+            l1.innerText = "ERROR PLEASE ENTER A VALID USERNAME"
+            l2.innerText = "ERROR PLEASE ENTER A VALID PASSWORD"
+        }
+    }
+</script>
