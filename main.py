@@ -1,4 +1,3 @@
-# Python 3 server example
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import time
 
@@ -26,6 +25,13 @@ class MyServer(BaseHTTPRequestHandler):
         except:
             pass
 
+    def do_POST(self):
+        '''Reads post request body'''
+        content_len = int(self.headers.getheader('content-length', 0))
+        post_body = self.rfile.read(content_len)
+        self.wfile.write("received post request:<br>{}".format(post_body))
+        print(post_body)
+
     def do_GET(self):
 
         self.send_response(200)
@@ -33,6 +39,7 @@ class MyServer(BaseHTTPRequestHandler):
         self.end_headers()
 
         self.loadPage(self.path)
+
         #self.wfile.write(bytes("<html><head><title>https://pythonbasics.org</title></head>", "utf-8"))
         #self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
         #self.wfile.write(bytes("<body>", "utf-8"))
